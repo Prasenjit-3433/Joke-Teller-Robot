@@ -107,6 +107,20 @@ const VoiceRSS = {
   },
 };
 
+// Passing Joke to VoiceRSS API
+function tellMe(joke) {
+    console.log('tell me: ', joke);
+    VoiceRSS.speech({
+        key: "f02fae0ff0824539937c736289288e34",
+        src: joke,
+        hl: "en-us",
+        v: "Linda",
+        r: 0,
+        c: "mp3",
+        f: "44khz_16bit_stereo",
+        ssml: false,
+      });
+}
 
 
 // Get jokes from Joke API
