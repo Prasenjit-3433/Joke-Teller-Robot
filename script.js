@@ -143,4 +143,5 @@ async function getJokes() {
     }
 }
 
-getJokes();
+// Event Listener:
+button.addEventListener('click', getJokes);
