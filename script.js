@@ -107,9 +107,13 @@ const VoiceRSS = {
   },
 };
 
+// Disable / Enable Button:
+function toggleButton() {
+    button.disabled = !button.disabled;
+}
+
 // Passing Joke to VoiceRSS API
 function tellMe(joke) {
-    console.log('tell me: ', joke);
     VoiceRSS.speech({
         key: "f02fae0ff0824539937c736289288e34",
         src: joke,
@@ -136,7 +140,12 @@ async function getJokes() {
         } else {
             joke = data.joke;
         }
+        
+        // Text-to-Speech
         tellMe(joke);
+
+        // Disable Button
+        toggleButton();
     } catch (error) {
         // Catch error here
         console.log('whoops', error);
@@ -145,3 +154,6 @@ async function getJokes() {
 
 // Event Listener:
 button.addEventListener('click', getJokes);
+
+// `ended' event is fired when the current playlist is ended:
+audioElement.addEventListener('ended', toggleButton);
